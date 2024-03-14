@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk2a2fvhhm108"]
+
+[ext_resource type="Script" path="res://world_scenes/battle_scene/battle_scene.gd" id="1_nf8f1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lx6by"]
+
+[node name="battle_scene" type="Node3D"]
+script = ExtResource("1_nf8f1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(5, 1, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+mesh = SubResource("CapsuleMesh_lx6by")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("CapsuleMesh_lx6by")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 3, 6)
