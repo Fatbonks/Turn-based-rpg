@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk2a2fvhhm108"]
+[gd_scene load_steps=5 format=3 uid="uid://dk2a2fvhhm108"]
 
 [ext_resource type="Script" path="res://world_scenes/battle_scene/battle_scene.gd" id="1_nf8f1"]
 [ext_resource type="Script" path="res://Resources/scripts/enemy_stats.gd" id="2_3h0ci"]
@@ -11,19 +11,11 @@ health = 20
 damage = 1
 speed = 10
 
-[sub_resource type="Resource" id="Resource_kojn3"]
-script = ExtResource("2_3h0ci")
-name = "rob"
-max_health = 10
-health = 10
-damage = 2
-speed = 21
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lx6by"]
 
 [node name="battle_scene" type="Node3D"]
 script = ExtResource("1_nf8f1")
-enemies = [SubResource("Resource_qdypu"), SubResource("Resource_kojn3")]
+enemies = Array[ExtResource("2_3h0ci")]([SubResource("Resource_qdypu")])
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

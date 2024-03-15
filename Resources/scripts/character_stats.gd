@@ -1,7 +1,7 @@
 class_name characterStats
 extends Resource
 
-
+@export var mesh:PackedScene
 @export var max_health:int
 @export var health:int
 @export var damage:int
