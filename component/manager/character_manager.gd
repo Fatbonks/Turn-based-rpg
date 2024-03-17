@@ -1,7 +1,12 @@
+class_name characterManager
 extends Node
 
 @export var character:characterStats
 
 
-func _ready():
-	Autoload.add_to_party(character)
+func take_damage(damage:int):
+	pass
+
+func do_damage(damage:int):
+	pass
+

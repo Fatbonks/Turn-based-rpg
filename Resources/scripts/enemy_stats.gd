@@ -6,3 +6,5 @@ extends Resource
 @export var health:int
 @export var damage:int
 @export var speed:int
+
+
