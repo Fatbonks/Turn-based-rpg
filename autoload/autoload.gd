@@ -1,6 +1,6 @@
 extends Node
 
-const ENEMY = preload("res://objects/enemies/enemy.tscn")
+const ENEMY = preload("res://objects/enemies/enemy_2.tscn")
 const PLAYER = preload("res://objects/player/player.tscn")
 
 var player_party:Array[PackedScene]

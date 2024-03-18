@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://qch0bh6upbyy"]
+
+[ext_resource type="Script" path="res://objects/enemies/enemy.gd" id="1_1pdg7"]
+[ext_resource type="Texture2D" uid="uid://c7sha4iowablt" path="res://icon.svg" id="2_0u1by"]
+[ext_resource type="Script" path="res://Resources/scripts/character_stats.gd" id="2_hwi5j"]
+
+[sub_resource type="Resource" id="Resource_iqxld"]
+resource_local_to_scene = true
+script = ExtResource("2_hwi5j")
+name = ""
+max_health = 2
+health = 2
+damage = 1
+speed = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gvng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10f4n"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_42shd"]
+material = SubResource("StandardMaterial3D_10f4n")
+
+[node name="Enemy_2" type="CharacterBody3D"]
+script = ExtResource("1_1pdg7")
+stats = SubResource("Resource_iqxld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5gvng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_42shd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.697476)
+visible = false
+texture = ExtResource("2_0u1by")

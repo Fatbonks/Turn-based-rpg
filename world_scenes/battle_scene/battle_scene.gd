@@ -90,14 +90,20 @@ func weighted_ran(attack_chance:int):
 
 
 func _on_player_attack_pressed():
-	instance_enemies[current_enemy].stats.take_damage(turnList[0].damage)
+	if instance_enemies.size() > 0:
+		instance_enemies[current_enemy].stats.take_damage(turnList[0].damage)
 
 func remove_from_turn_list(removed_object:String):
-	for object in range(turnList.size() - 1):
+	print(removed_object)
+	for object in range(len(turnList) - 1):
 		if turnList[object].name == removed_object:
 			turnList.pop_at(object)
-	for object in range(instance_enemies.size() - 1):
-		if instance_enemies[object].name == removed_object:
-			instance_enemies.remove_at(object)
-			print(instance_enemies)
-	print(turnList)
+	for i in len(instance_enemies):
+		print("asds")
+		if instance_enemies[i - 1].stats.name == removed_object:
+			instance_enemies.pop_at(i - 1)
+	if instance_enemies.size() > 0:
+		current_enemy = 0
+		instance_enemies[current_enemy].focus()
+	else:
+		choose_enemy = false
