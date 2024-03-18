@@ -20,9 +20,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -2)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="battle_Ui" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="battle_Ui"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -31,9 +33,9 @@ offset_top = -139.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="player_attack" type="Button" parent="CanvasLayer/PanelContainer"]
+[node name="player_attack" type="Button" parent="battle_Ui/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Attack"
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/player_attack" to="." method="_on_player_attack_pressed"]
+[connection signal="pressed" from="battle_Ui/PanelContainer/player_attack" to="." method="_on_player_attack_pressed"]

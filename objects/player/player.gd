@@ -13,3 +13,4 @@ func _ready():
 func is_turn():
 	battle_scene.player_turn()
 	
+

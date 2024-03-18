@@ -13,7 +13,7 @@ func _ready():
 	stats.dead.connect(death)
 
 func turn():
-	pass
+	battle_scene.enemy_turn(stats.damage)
 
 func unfocus():
 	sprite_3d.visible = false

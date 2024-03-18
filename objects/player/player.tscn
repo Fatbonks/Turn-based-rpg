@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2hlrgltp4u7l"]
+[gd_scene load_steps=9 format=3 uid="uid://c2hlrgltp4u7l"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_q580v"]
 [ext_resource type="Script" path="res://Resources/scripts/character_stats.gd" id="2_vfna3"]
@@ -18,6 +18,11 @@ speed = 11
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_adgg1"]
 material = SubResource("StandardMaterial3D_8ons0")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_1fsnn"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1u701"]
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_q580v")
 stats = SubResource("Resource_u0lpm")
@@ -27,3 +32,29 @@ shape = SubResource("CapsuleShape3D_ft67w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_adgg1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+texture = SubResource("ViewportTexture_1fsnn")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="Control" type="Control" parent="SubViewport/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/CanvasLayer/Control"]
+material = SubResource("CanvasItemMaterial_1u701")
+layout_mode = 0
+offset_right = 153.0
+offset_bottom = 27.0
+step = 1.0
+value = 100.0
+show_percentage = false

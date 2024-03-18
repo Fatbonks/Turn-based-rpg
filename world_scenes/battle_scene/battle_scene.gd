@@ -2,6 +2,8 @@ class_name battleScene
 extends Node3D
 @onready var party_spawnpoints:Node3D = %party_spawnpoints
 @onready var enemy_spawnpoints:Node3D = %enemy_spawnpoints
+@onready var battle_ui:CanvasLayer = %battle_Ui
+
 var choose_enemy:bool
 var is_enemy_turn:bool
 var turnList:Array[characterStats]
@@ -39,19 +41,26 @@ func start_battle():
 	
 
 func end_battle():
-	instance_enemies[current_enemy].unfocus()
-	var temp = turnList[0]
-	turnList.pop_front()
-	turnList.push_back(temp)
-	start_battle()
+	if instance_enemies.size() > 0:
+		battle_ui.hide()
+		instance_enemies[current_enemy].unfocus()
+		var temp = turnList[0]
+		turnList.pop_front()
+		turnList.push_back(temp)
+		print(instance_players[0].stats.health, "health")
+		await get_tree().create_timer(0.5).timeout
+		start_battle()
 
 func player_turn():
 	choose_enemy = true
 	current_enemy = 0
 	instance_enemies[current_enemy].focus()
+	battle_ui.show()
 	
-func enemy_turn():
-	pass
+func enemy_turn(damage:int):
+	var pick = randi_range(0, instance_players.size() - 1)
+	instance_players[pick].stats.take_damage(damage)
+	end_battle()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("left") and choose_enemy:
@@ -92,14 +101,13 @@ func weighted_ran(attack_chance:int):
 func _on_player_attack_pressed():
 	if instance_enemies.size() > 0:
 		instance_enemies[current_enemy].stats.take_damage(turnList[0].damage)
+		end_battle()
 
 func remove_from_turn_list(removed_object:String):
-	print(removed_object)
 	for object in range(len(turnList) - 1):
 		if turnList[object].name == removed_object:
 			turnList.pop_at(object)
 	for i in len(instance_enemies):
-		print("asds")
 		if instance_enemies[i - 1].stats.name == removed_object:
 			instance_enemies.pop_at(i - 1)
 	if instance_enemies.size() > 0:
