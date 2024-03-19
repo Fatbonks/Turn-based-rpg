@@ -8,7 +8,7 @@ signal hit
 @export var health:int
 @export var damage:int
 @export var speed:int
-
+var id:int
 
 func add_health(amount:int):
 	health += amount
@@ -20,3 +20,6 @@ func take_damage(damage:int):
 	health -= damage
 	if health <= 0:
 		dead.emit()
+
+func generate_id(num:int):
+	id += num

@@ -21,5 +21,6 @@ func focus():
 	sprite_3d.visible = true
 
 func death():
-	battle_scene.remove_from_turn_list(stats.name)
+	print(stats.id)
+	battle_scene.remove_from_turn_list(stats.id)
 	queue_free()

@@ -9,12 +9,13 @@ var party_limit:int = 4
 
 func _ready():
 	add_to_party(PLAYER)
+	add_to_party(PLAYER)
 	add_to_enemy(ENEMY)
 	add_to_enemy(ENEMY)
 
 func add_to_party(member:PackedScene):
-	if player_party.find(member) != -1 or len(player_party) == party_limit:
-		return
+	#if player_party.find(member) != -1 or len(player_party) == party_limit:
+		#return
 	player_party.append(member)
 	
 func add_to_enemy(enemy:PackedScene):
